@@ -667,3 +667,29 @@ body:not(.user-is-tabbing) a:focus {
     height: 40%;
     border-radius: 10px;
 }
+
+.language-switch {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding-right: 50px;
+  }
+  
+  .flag-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    transition: transform 0.3s ease;
+  }
+  
+  .flag-btn:hover {
+    transform: scale(1.1);
+  }
+  
+  .flag-icon {
+    width: 30px; /* Adjust the size of the flags */
+    height: auto;
+    border-radius: 5px;
+  }
+  
