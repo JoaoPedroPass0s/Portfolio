@@ -559,13 +559,13 @@ body:not(.user-is-tabbing) a:focus {
 }
 
 .about__photo {
-    transform: scale(0.9); /* Scales image to 80% */
+    transform: scale(1); /* Scales image to 80% */
     transform-origin: center; /* Keeps it centered */
 }
 
 @media(min-width: 901px) {
     .about__text {
-        flex: 0 0 35%;
+        flex: 0 0 50%;
     }
     
     .about__photo-container {
