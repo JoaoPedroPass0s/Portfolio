@@ -558,6 +558,11 @@ body:not(.user-is-tabbing) a:focus {
     margin-bottom: var(--gutter-normal);
 }
 
+.about__photo {
+    transform: scale(0.9); /* Scales image to 80% */
+    transform-origin: center; /* Keeps it centered */
+}
+
 @media(min-width: 901px) {
     .about__text {
         flex: 0 0 35%;
@@ -650,4 +655,15 @@ body:not(.user-is-tabbing) a:focus {
 
 .prev:hover, .next:hover {
     background-color: rgba(0, 0, 0, 0.8);
+}
+
+.link{
+    text-decoration: none;
+    color: #ff3258;;
+}
+
+.work__gif{
+    width: 40%;
+    height: 40%;
+    border-radius: 10px;
 }

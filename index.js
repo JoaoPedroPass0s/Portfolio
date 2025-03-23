@@ -42,55 +42,93 @@ window.addEventListener("scroll", () => {
   }
 });
 
-const videos = [
-    "./images/Prototype.png",
-    "./videos/video2.mp4",
-    "./videos/video3.mp4"
-];
-
 document.addEventListener("DOMContentLoaded", () => {
-  const mediaPlayer = document.getElementById("mediaPlayer"); // Video element
-  const mediaImage = document.getElementById("mediaImage"); // Image element
+  const mediaSets = {
+      section1: [
+          { type: "image", src: "./images/Prototype1.png" },
+          { type: "video", src: "./videos/video1.mp4" },
+          { type: "video", src: "./videos/video2.mp4" }
+      ],
+      section2: [
+          { type: "image", src: "./images/Prototype2.png" },
+          { type: "video", src: "./videos/video3.mp4" },
+          { type: "video", src: "./videos/video4.mp4" }
+      ]
+  };
 
-  if (!mediaPlayer || !mediaImage) {
-      console.error("Media elements not found!");
-      return;
-  }
+  const currentIndex = {
+      section1: 0,
+      section2: 0
+  };
 
-  // Image first, then video1, then video2
-  const mediaFiles = [
-      { type: "image", src: "./images/Prototype.png" },
-      { type: "video", src: "./videos/video1.mp4" },
-      { type: "video", src: "./videos/video2.mp4" }
-  ];
+  // Initialize first media for each section
+  Object.keys(mediaSets).forEach((sectionId) => {
+      updateMedia(sectionId);
+  });
 
-  let currentIndex = 0;
-
-  function changeMedia(direction) {
-      currentIndex += direction;
-      if (currentIndex < 0) {
-          currentIndex = mediaFiles.length - 1;
-      } else if (currentIndex >= mediaFiles.length) {
-          currentIndex = 0;
-      }
-
-      const currentMedia = mediaFiles[currentIndex];
-
-      if (currentMedia.type === "video") {
-          mediaPlayer.style.display = "block";
-          mediaImage.style.display = "none";
-
-          mediaPlayer.src = currentMedia.src;
-          mediaPlayer.play(); // Auto-play video
-      } else {
-          mediaPlayer.style.display = "none";
-          mediaImage.style.display = "block";
-
-          mediaImage.src = currentMedia.src;
-      }
-  }
-
-  // Assign event listeners to buttons
-  document.querySelector(".prev").addEventListener("click", () => changeMedia(-1));
-  document.querySelector(".next").addEventListener("click", () => changeMedia(1));
 });
+
+// Move this function outside so it is accessible globally
+function changeMedia(direction, sectionId) {
+  const mediaSets = {
+      section1: [
+          { type: "image", src: "./images/Prototype1.png" },
+          { type: "video", src: "./videos/video1.mp4" },
+          { type: "video", src: "./videos/video2.mp4" }
+      ],
+      section2: [
+          { type: "image", src: "./images/Prototype2.png" },
+          { type: "video", src: "./videos/video3.mp4" },
+          { type: "video", src: "./videos/video4.mp4" }
+      ]
+  };
+
+  const currentIndex = window.currentIndex || { section1: 0, section2: 0 };
+
+  currentIndex[sectionId] += direction;
+
+  if (currentIndex[sectionId] < 0) {
+      currentIndex[sectionId] = mediaSets[sectionId].length - 1;
+  } else if (currentIndex[sectionId] >= mediaSets[sectionId].length) {
+      currentIndex[sectionId] = 0;
+  }
+
+  window.currentIndex = currentIndex;
+  updateMedia(sectionId);
+}
+
+function updateMedia(sectionId) {
+  const mediaSets = {
+      section1: [
+          { type: "image", src: "./images/Prototype.png" },
+          { type: "video", src: "./videos/video1.mp4" },
+          { type: "video", src: "./videos/video2.mp4" }
+      ],
+      section2: [
+          { type: "gif", src: "./gifs/gif1.gif" },
+          { type: "gif", src: "./gifs/gif2.gif" },
+          { type: "gif", src: "./gifs/gif3.gif" }
+      ]
+  };
+
+  const currentIndex = window.currentIndex || { section1: 0, section2: 0 };
+  const currentMedia = mediaSets[sectionId][currentIndex[sectionId]];
+  const mediaPlayer = document.getElementById(`mediaPlayer${sectionId.slice(-1)}`);
+  const mediaImage = document.getElementById(`mediaImage${sectionId.slice(-1)}`);
+
+  if (currentMedia.type === "video") {
+      mediaPlayer.style.display = "block";
+      mediaImage.style.display = "none";
+      mediaPlayer.src = currentMedia.src;
+      mediaPlayer.play();
+  } else if (currentMedia.type === "gif") {
+      mediaPlayer.style.display = "none";
+      mediaImage.style.display = "block";
+      mediaImage.src = currentMedia.src;
+  } else {
+      mediaPlayer.style.display = "none";
+      mediaImage.style.display = "block";
+      mediaImage.src = currentMedia.src;
+  }
+}
+
