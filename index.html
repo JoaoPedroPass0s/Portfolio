@@ -84,7 +84,7 @@
               <ul class="work__list">
                 <li><a href="#lineflrobot" class="nav__link">Line Follower Robot / Grid Maze Solver Robot</a></li>
                 <li><a href="#christmastree" class="nav__link">Smart Christmas Tree Lights</a></li>
-                <li><a href="#lockersystem" class="nav__link">Locker System</a></li>
+                <li><a href="#lockersystem" class="nav__link">Internet of Lockers</a></li>
               </ul>
 
               <p>
@@ -167,29 +167,33 @@
 
           <div class="work__box" id="lockersystem">
             <div class="work__text__project">
-              <h3>Notificator</h3>
+              <h3>Internet of Lockers</h3>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod,
-                eius.
+                The Internet of Lockers project was developed as part of the Integrated Project for the Degree in 
+                Computer Engineering and Computing at the Faculty of Engineering of the University of Porto.
+                The Internet of Lockers aims to facilitate the collection and return of FEUP equipment, allowing users of the reservation 
+                system to carry out these actions outside the operating hours of the equipment rental service, using lockers at any time they wish.
               </p>
-              <ul class="work__list">
-                <li>React</li>
-                <li>Next.js</li>
-                <li>Node</li>
-                <li>MongoDB</li>
-              </ul>
 
               <div class="work__links">
-                <a href="#" class="link__text">
+                <a href="https://github.com/JoaoPedroPass0s/Locker" target="_blank" class="link__text">
                   Visit Project Github Page <span>&rarr;</span>
                 </a>
-                <a href="#">
+                <a href="https://github.com/JoaoPedroPass0s/Locker" target="_blank">
                   <img src="./images/github.svg" class="work__code" title="View Source Code" alt="GitHub">
                 </a>
               </div>
             </div>
             <div class="work__image-box">
-              <img src="./images/project-3.png" class="work__image" alt="Project 3" />
+              <div class="video-container">
+                  <img id="mediaImage3" class="work__image" style="display: block;" src="" alt="Media">
+                  <video id="mediaPlayer3" class="work__media" controls style="display: none;">
+                      <source src="" type="video/mp4">
+                      Your browser does not support the video tag.
+                  </video>
+                  <button class="prev" onclick="changeMedia(-1, 'section3')">&#10094;</button>
+                  <button class="next" onclick="changeMedia(1, 'section3')">&#10095;</button>
+              </div>
             </div>
           </div>
         </div>
@@ -210,12 +214,9 @@
               in vel, ex quam quidem quos mollitia labore aut sunt eius
               ratione molestiae fuga veniam facere similique voluptate.
             </p>
-            <!-- Provide a link to your resume -->
-            <a href="#" class="btn">My Resume</a>
           </div>
 
           <div class="about__photo-container">
-            <!-- Add a nice photo of yourself -->
             <img class="about__photo" src="./images/foto2.jpg" alt="" />
           </div>
         </div>

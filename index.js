@@ -42,23 +42,30 @@ window.addEventListener("scroll", () => {
   }
 });
 
+const mediaSets = {
+  section1: [
+      { type: "image", src: "./images/Prototype.png" },
+      { type: "video", src: "./videos/video1.mp4" },
+      { type: "video", src: "./videos/video2.mp4" }
+  ],
+  section2: [
+      { type: "gif", src: "./gifs/gif1.gif" },
+      { type: "gif", src: "./gifs/gif2.gif" },
+      { type: "gif", src: "./gifs/gif3.gif" }
+  ],
+  section3: [
+      { type: "image", src: "./images/locker1.png" },
+      { type: "image", src: "./images/locker2.png" },
+      { type: "image", src: "./images/locker3.png" }
+  ]
+};
+
 document.addEventListener("DOMContentLoaded", () => {
-  const mediaSets = {
-      section1: [
-          { type: "image", src: "./images/Prototype1.png" },
-          { type: "video", src: "./videos/video1.mp4" },
-          { type: "video", src: "./videos/video2.mp4" }
-      ],
-      section2: [
-          { type: "image", src: "./images/Prototype2.png" },
-          { type: "video", src: "./videos/video3.mp4" },
-          { type: "video", src: "./videos/video4.mp4" }
-      ]
-  };
 
   const currentIndex = {
       section1: 0,
-      section2: 0
+      section2: 0,
+      section3: 0
   };
 
   // Initialize first media for each section
@@ -70,20 +77,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Move this function outside so it is accessible globally
 function changeMedia(direction, sectionId) {
-  const mediaSets = {
-      section1: [
-          { type: "image", src: "./images/Prototype1.png" },
-          { type: "video", src: "./videos/video1.mp4" },
-          { type: "video", src: "./videos/video2.mp4" }
-      ],
-      section2: [
-          { type: "image", src: "./images/Prototype2.png" },
-          { type: "video", src: "./videos/video3.mp4" },
-          { type: "video", src: "./videos/video4.mp4" }
-      ]
-  };
 
-  const currentIndex = window.currentIndex || { section1: 0, section2: 0 };
+  const currentIndex = window.currentIndex || { section1: 0, section2: 0, section3: 0 };
 
   currentIndex[sectionId] += direction;
 
@@ -98,20 +93,8 @@ function changeMedia(direction, sectionId) {
 }
 
 function updateMedia(sectionId) {
-  const mediaSets = {
-      section1: [
-          { type: "image", src: "./images/Prototype.png" },
-          { type: "video", src: "./videos/video1.mp4" },
-          { type: "video", src: "./videos/video2.mp4" }
-      ],
-      section2: [
-          { type: "gif", src: "./gifs/gif1.gif" },
-          { type: "gif", src: "./gifs/gif2.gif" },
-          { type: "gif", src: "./gifs/gif3.gif" }
-      ]
-  };
 
-  const currentIndex = window.currentIndex || { section1: 0, section2: 0 };
+  const currentIndex = window.currentIndex || { section1: 0, section2: 0, section3: 0 };
   const currentMedia = mediaSets[sectionId][currentIndex[sectionId]];
   const mediaPlayer = document.getElementById(`mediaPlayer${sectionId.slice(-1)}`);
   const mediaImage = document.getElementById(`mediaImage${sectionId.slice(-1)}`);
